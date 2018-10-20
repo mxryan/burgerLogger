@@ -1,0 +1,20 @@
+{
+  "name": "burgerlogger",
+  "version": "1.0.0",
+  "description": "Create a list of burgers, eat them, and record all of your burger-conquests.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mxryan/burgerLogger.git"
+  },
+  "author": "Michael Ryan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mxryan/burgerLogger/issues"
+  },
+  "homepage": "https://github.com/mxryan/burgerLogger#readme"
+}

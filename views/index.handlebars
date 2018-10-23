@@ -1,4 +1,7 @@
 <p>Hello</p>
+<h4>Add a burger!</h4>
+<input type="text" id="new-input">
+<button id="sub-btn">Submit!</button>
 <h4>Begging to be consumed</h4>
 <ul>
   {{#each burgers}}
@@ -18,18 +21,36 @@
   {{/each}}
 </ul>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js">
-  </script>
+</script>
 <script>
- 
-  document.querySelectorAll(".devour-btn").forEach((each)=>{
-    each.addEventListener("click", (e)=>{
+
+  document.querySelectorAll(".devour-btn").forEach((each) => {
+    each.addEventListener("click", (e) => {
       console.log(e.target.value);
-      data = {id: e.target.value};
+      const data = { id: e.target.value };
       $.ajax({
         type: "POST",
         url: "/",
         data: data
-      }, res=>console.log(res));
-    })
-  })
+      }).then((res) => {
+        console.log(res)
+      }).catch((err) => {
+        console.log(err)
+      });
+    });
+  });
+
+  document.querySelector("#sub-btn").addEventListener("click", () => {
+    const burger_name = document.querySelector("#new-input").value;
+    const data = { name: burger_name }
+    $.ajax({
+      type: "POST",
+      url: "/new",
+      data: data
+    }).then((res) => {
+      console.log(res);
+    }).catch((r) => {
+      console.log(r);
+    });
+  });
 </script>

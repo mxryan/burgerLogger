@@ -20,6 +20,7 @@ function convert(obj) {
 
 const orm = {
   getAll: (table, cb) => {
+    console.log("orm getall called");
     const qs = "SELECT * FROM " + table + ";";
     db.query(qs, (err, data) => {
       if (err) return console.log(err);
@@ -27,6 +28,7 @@ const orm = {
     });
   },
   create: (table, cols, vals, cb) => {
+    console.log("orm create called");
     const qs = `INSERT INTO ${table} (${cols.toString()})
     VALUES (${makenQM(vals.length)})`;
     db.query(qs, vals, (err, data) => {
@@ -35,6 +37,7 @@ const orm = {
     });
   },
   update: (table, obj, condition, cb) => {
+    console.log("orm update called");
     const qs = `UPDATE ${table}
     SET ${convert(obj)} WHERE ${condition}`;
     db.query(qs, (err, data) => {

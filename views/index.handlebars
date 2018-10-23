@@ -1,0 +1,35 @@
+<p>Hello</p>
+<h4>Begging to be consumed</h4>
+<ul>
+  {{#each burgers}}
+  {{#unless devoured}}
+  <li>{{burger_name}}</li>
+  <button class="devour-btn" value={{id}}>Devour!</button>
+  {{/unless}}
+  {{/each}}
+</ul>
+<h4>Devoured</h4>
+
+<ul>
+  {{#each burgers}}
+  {{#if devoured}}
+  <li>{{burger_name}}</li>
+  {{/if}}
+  {{/each}}
+</ul>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js">
+  </script>
+<script>
+ 
+  document.querySelectorAll(".devour-btn").forEach((each)=>{
+    each.addEventListener("click", (e)=>{
+      console.log(e.target.value);
+      data = {id: e.target.value};
+      $.ajax({
+        type: "POST",
+        url: "/",
+        data: data
+      }, res=>console.log(res));
+    })
+  })
+</script>

@@ -1,8 +1,7 @@
-CREATE DATABASE burgerlogger_db;
-USE burgerlogger_db;
-CREATE TABLE burgers(
-id INT AUTO_INCREMENT NOT NULL,
-burger_name VARCHAR(80) NOT NULL,
-devoured BOOL DEFAULT 0,
-PRIMARY KEY(id)
+CREATE TABLE burgers (
+	id INT AUTO_INCREMENT NOT NULL,
+  burger_name VARCHAR(90),
+  devoured BOOL DEFAULT 0,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY(id)
 );

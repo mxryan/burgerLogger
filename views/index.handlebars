@@ -3,17 +3,21 @@
 <input type="text" id="new-input">
 <button id="sub-btn">Submit!</button>
 <h4>Begging to be consumed</h4>
-<ul>
+<ul id="to-eat-list">
   {{#each burgers}}
   {{#unless devoured}}
-  <li>{{burger_name}}</li>
-  <button class="devour-btn" value={{id}}>Devour!</button>
+
+  <li id={{id}}>{{burger_name}}</li>
+  <button class="devour-btn" value={{id}}>
+    Devour!
+  </button>
+  
   {{/unless}}
   {{/each}}
 </ul>
 <h4>Devoured</h4>
 
-<ul>
+<ul id="eaten-list">
   {{#each burgers}}
   {{#if devoured}}
   <li>{{burger_name}}</li>
@@ -22,35 +26,5 @@
 </ul>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js">
 </script>
-<script>
-
-  document.querySelectorAll(".devour-btn").forEach((each) => {
-    each.addEventListener("click", (e) => {
-      console.log(e.target.value);
-      const data = { id: e.target.value };
-      $.ajax({
-        type: "POST",
-        url: "/",
-        data: data
-      }).then((res) => {
-        console.log(res)
-      }).catch((err) => {
-        console.log(err)
-      });
-    });
-  });
-
-  document.querySelector("#sub-btn").addEventListener("click", () => {
-    const burger_name = document.querySelector("#new-input").value;
-    const data = { name: burger_name }
-    $.ajax({
-      type: "POST",
-      url: "/new",
-      data: data
-    }).then((res) => {
-      console.log(res);
-    }).catch((r) => {
-      console.log(r);
-    });
-  });
+<script src="/assets/js/script.js">
 </script>

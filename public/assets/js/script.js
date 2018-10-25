@@ -1,11 +1,6 @@
-const toEatDisplay = document.querySelector("#to-eat-list");
-const eatenDisplay = document.querySelector("#eaten-list");
-
-// when devoured button is clicked, the associated burger should move down to next list
-
 document.querySelectorAll(".devour-btn").forEach((each) => {
   each.addEventListener("click", (e) => {
-    console.log("registered a click");
+    
     const data = { id: e.target.value };
     $.ajax({
       type: "POST",
@@ -23,6 +18,10 @@ document.querySelector("#sub-btn").addEventListener("click", () => {
     type: "POST",
     url: "/new",
     data: data
+  }).then((d)=>{
+    console.log(d);
+  }).catch((e)=>{
+    console.log(e);
   });
   location.reload();
 });

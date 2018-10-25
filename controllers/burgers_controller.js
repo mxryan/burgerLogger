@@ -11,8 +11,8 @@ module.exports = (app) => {
     burger.update({devoured: 1}, "ID="+req.body.id, (err, data)=>{
       if (err) return console.log(err);
       console.log(res);
-      res.end();
-      
+      res.json(data);
+      res.send("YOOOO");
     });
   });
   app.post("/new", (req, res)=>{
@@ -20,7 +20,8 @@ module.exports = (app) => {
     burger.create(["burger_name"], [req.body.name],(err,data)=>{
       if (err) return console.log(err);
       console.log(data);
-      res.redirect("/");
+      res.json(data);
+      res.send("YOOOOO@@@@@@!!!!");
     });
   });
   
